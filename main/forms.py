@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django import forms
@@ -16,4 +16,14 @@ class SingUpForm(UserCreationForm):
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'input-field', 'placeholder': 'Логин', 'id': 'login'}))
-    password = forms.CharField(widget=forms.TextInput(attrs={'type': 'password', 'class': 'input-field input-password', 'placeholder': 'Пароль', 'id': 'password'}))
+    password = forms.CharField(widget=forms.TextInput(attrs={'type': 'password', 'class': 'input-field input-password', 'placeholder': 'Пароль', 'id': 'password'})) 
+
+class user_update_form(UserChangeForm):
+
+    password = None
+    
+    username = forms.CharField(help_text="Новое имя пользователя")
+
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'photo_prof')

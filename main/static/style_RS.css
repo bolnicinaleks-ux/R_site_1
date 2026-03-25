@@ -1,0 +1,142 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    background-color: #D7D7D7;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.decorations {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; overflow: hidden; z-index: -1;
+}
+.img1 {
+    position: fixed; top: 25%; left: 0;
+    transform: translateX(-65%) rotate(24deg);
+    filter: drop-shadow( 14px 12px 10px rgba(0, 0, 0, 0.25));
+    width: 40%; max-width: 500px; min-width: 300px;
+}
+.img2_2 {
+    position: fixed; top: -10%; right: 0;
+    transform: translateX(65%) rotate(330deg);
+}
+.img2 {
+    filter: drop-shadow( 14px 12px 10px rgba(0, 0, 0, 0.25));
+    transform: scale(-1,1);
+    width: 40%; max-width: 500px; min-width: 300px;
+}
+
+.main-container {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    width: 100%; padding: 20px; z-index: 10;
+}
+
+.regist {
+    display: flex; position: relative;
+    width: 280px; height: 50px;
+    background-color: #ffffff; border-radius: 10px;
+    margin-bottom: 25px;
+}
+.pp1_1 {
+    position: absolute;
+    width: 130px; height: 40px;
+    top: 5px; left: 5px;
+    border-radius: 8px; background-color: #D9D9D9;
+    transition: 0.8s cubic-bezier(0.6, -0.01, 0.39, 0.96); z-index: 1;
+}
+.regist.register-mode .pp1_1 { left: 145px; }
+.pp1, .pp2 {
+    position: relative; z-index: 2;
+    width: 50%; text-align: center; line-height: 50px;
+    text-decoration: none; font-size: 18px; color: #7F7F7F; transition: 0.5s;
+}
+.regist.login-mode .pp1 { color: #ffffff; }
+.regist.register-mode .pp2 { color: #ffffff; }
+
+.box {
+    background-color: #D9D9D9;
+    width: 896px; max-width: 100%; height: 412px;
+    box-shadow: 0px 0px 6.3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 29px; display: flex; position: relative; overflow: hidden;
+}
+
+.box-forms {
+    position: relative; width: 50%; height: 100%;
+}
+.box-visuals {
+    position: relative; width: 50%; height: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+
+.gpt1 {
+    width: auto; max-width: 260px; height: 55%;
+    box-shadow: 0px 4px 65px 30px rgba(0, 0, 0, 0.25); border-radius: 16%;
+}
+.by_rinat {
+    font-style: normal; font-family: 'Times New Roman', Times, serif;
+    color: #ffffff; font-size: 26px; letter-spacing: 2px;
+    margin-top: 25px; /* Creates spacing from image to be nicely underneath it */
+}
+
+.input-field {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    width: 250px; height: 42px;
+    border: 1px solid #8a2be2; border-radius: 8px; background-color: #ffffff;
+    padding-left: 45px; font-size: 14px;
+    transition: top 0.8s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.5s ease;
+}
+.input-field:focus { outline: 2px solid rgb(0, 0, 255); }
+
+#p_login, #login {
+    background: url('images/Tilda_Icons_14ht_guest.svg') no-repeat 12px center;
+    background-size: 22px; background-color: #ffffff;
+}
+#password, #p_password {
+    background: url('images/iconmonstr-lock-thin-240.png') no-repeat 14px center;
+    background-size: 20px; background-color: #ffffff;
+}
+
+/* Base (Login) animations & positions */
+#p_login { top: 75px; opacity: 0; pointer-events: none; }
+#login { top: 75px; opacity: 1; pointer-events: auto; }
+#password { top: 140px; opacity: 1; pointer-events: auto; }
+#p_password { top: 140px; opacity: 0; pointer-events: none; z-index: -1; }
+
+.forgot-wrapper {
+    position: absolute; top: 205px; left: 0; width: 100%; text-align: center;
+    transition: opacity 0.5s;
+}
+.p2 { text-decoration: none; color: #3050F3; transition: 0.3s; font-size: 15px; }
+.p2:hover { color: #2D864F; }
+
+.knopka {
+    position: absolute; top: 250px; left: 50%; transform: translateX(-50%);
+    width: 160px; height: 45px; border: none; border-radius: 15px;
+    color: #2D864F; background-color: #ffffff; /* Explicit background color to make it visible */
+    font-size: 17px; font-weight: bold; transition: 0.8s; cursor: pointer;
+}
+.knopka:hover {
+    background-color: rgb(233, 233, 233);
+    box-shadow: 0px 0px 2px 2px rgba(157, 160, 148, 0.25);
+    color: #267042; transition: .2s linear;
+}
+
+/* Register animations & positions */
+.register-mode #p_login { top: 35px; opacity: 1; pointer-events: auto; }
+.register-mode #login { top: 100px; }
+.register-mode #password { top: 165px; }
+.register-mode #p_password { top: 230px; opacity: 1; pointer-events: auto; z-index: 1;}
+.register-mode .forgot-wrapper { opacity: 0; pointer-events: none; }
+.register-mode .knopka { top: 305px; }
+
+@media (max-width: 768px) {
+    .box {
+        flex-direction: column-reverse; width: 90vw; height: auto; min-height: 600px; overflow: visible;
+    }
+    .box-forms, .box-visuals { width: 100%; }
+    .box-visuals { height: auto; margin-top: 30px; margin-bottom: 20px; }
+    .box-forms { min-height: 380px; }
+}

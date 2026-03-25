@@ -1,0 +1,75 @@
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход и Регистрация</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/style_RS.css' %}">
+    <script src="{% static 'js.js' %}" defer></script>
+</head>
+<body>
+    <div class="decorations">
+        <img class="img1" src="{% static "images/86633751805982__1_-removebg-preview.png" %}" alt="">
+        <div class="img2_2">
+            <img class="img2" src="{% static "images/86633751805982__1_-removebg-preview.png" %}" alt="">
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="regist login-mode" id="regist-toggle">
+            <div id="anim1" class="pp1_1"></div>
+            <a id="btn_login" href="#" class="pp1">Вход</a>
+            <a id="btn_register" href="{% url 'signup' %}" class="pp2">Регистрация</a>
+        </div>
+
+        <div class="box">
+            <div class="box-forms">
+                <form id="auth_form" method="post" action="{% url 'login_RS' %}" >
+                    {% csrf_token %}
+
+                    <div id="first_name_div">
+                    {{ form2.first_name | attr:"disabled" }}
+                    </div>
+                    
+                    <div id="username_div">
+                    {{ form.username }}
+                    </div>
+
+                    <div id="password1_div">
+                    {{ form.password }}
+                    </div>
+
+                    <!--
+                    
+                    <div id="password2_div">
+                    {% render_field form2.password1 class="input-field" placeholder="Пароль", id="password1" %}
+                    </div>
+
+                    -->
+
+                    {% render_field form2.password2 type="password" id="p_password" class="input-field input-password" placeholder="Подтвердите пароль" %}
+                    
+                    <div id="p" class="forgot-wrapper">
+                        <a href="#" class="p2">Забыли пароль?</a>
+                    </div>
+                    
+                    <button name="registr" type="submit" class="knopka" id="knopka" value="login">Войти</button>
+                </form>
+            </div>
+            
+            <div class="box-visuals">
+                <img class="gpt1" src="{% static 'images/ChatGPT Image 16 окт. 2025 г., 21_46_38.png' %}" alt="rin">
+                <h1 class="by_rinat">BY RINAT</h1>
+            </div>
+        </div>
+    </div>
+    <script>
+        const login = "{% url 'login' %}";
+        const signup = "{% url 'signup' %}";
+        window.login
+        window.signup
+    </script>
+</body>
+</html>

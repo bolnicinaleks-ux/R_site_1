@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}<title>main</title>{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/style.css' %}">
+    <script src="{% static 'js_index.js' %}" defer></script>
+</head>
+<body>
+    {% block sidebar %}
+    <div class="menu">
+        <div class="reg">
+            {% if user.is_authenticated %}
+                <img class="reg_r" src="{{ user.photo_prof.url }}" alt="Google Logo">
+                <p>{{ user.get_username }}</p>
+            <form action="{% url 'logout_RS' %}">
+                <button style="
+    background-color: transparent;
+    width: 35px;
+    margin-left: 74px;
+    border: none;
+">
+                <img class="reg_reg" src="{% static "images/arrow-out-right-square-half(1).png" %}" alt="Arrow Icon">
+            </button>
+            </form>
+            {% else %}
+            <p style="margin-left: 30px;"><a style="text-decoration: none; color: black;" href="{% url 'login_RS' %}">Войти</a></p>
+            <form action="{% url 'login_RS' %}">
+            <button style="
+    background-color: transparent;
+    width: 35px;
+    margin-left: 74px;
+    border: none;
+">
+                <img class="reg_reg" src="{% static "images/arrow-out-right-square-half(1).png" %}" alt="Arrow Icon">
+            </button>
+            </form>
+            {% endif %}
+        </div>
+        <div class="predaksia">
+        </div>
+        <ul class="nav">
+            {% if user.is_authenticated %}
+                <li class="{% if request.resolver_match.url_name == 'profile' %}nav_1_1{% else %}nav_1{% endif %}" id="nav_1"><a href="{% url 'profile' %}" >Профиль</a></li>
+            {% else %}
+                <li class="nav_1 id="nav_1"><a href="{% url 'login_RS' %}" >Войти</a></li>
+            {% endif %}
+            <li class="{% if request.resolver_match.url_name == 'index' %}nav_2_1{% else %}nav_2{% endif %}" id="nav_2"><a href="{% url 'index' %}" >Магазин</a></li>
+            <li class="{% if request.resolver_match.url_name == 'basket' %}nav_3_1{% else %}nav_3{% endif %}" id="nav_3"><a href="{% url 'basket' %}" >Корзина</a></li>
+            <li class="nav_4" id="nav_4"><a href="#" >Категории</a></li>
+        </ul>
+    </div>
+    {% endblock %}
+    <div>{% block content %}{% endblock %}</div>
+    <footer class="site-footer">
+      <div class="footer-phone">+7-777-XXX-XX-XX</div>
+      <div class="footer-year">@2025</div>
+      <div class="footer-socials">
+        <img src="" alt="X" />
+        <img src="" alt="Instagram" />
+        <img src="" alt="Telegram" />
+        <img src="" alt="WhatsApp" />
+      </div>
+    </footer>
+</body>
+</html>

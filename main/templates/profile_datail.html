@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="glav_red">
+    <p style="color: #484848;">Настройка профиля</p>
+    <div class="glav_red_form">
+    <form action="" method="post" class="glav_red_img">
+        <img src="{{ user.photo_prof.url }}" alt="">
+        <button class="glav_red_img_button"><img src="{% static 'images/icons8-карандаш-96.png' %}" alt=""></button>
+    </form>
+    <form action="" method="post" class="glav_red_log">
+        <label for="">Имя пользователя</label>
+        <input type="text" placeholder="{{ user.get_username }}">
+    </form>
+    <form action="" method="post" class="glav_red_par">
+        <label for="">Изменить пароль</label>
+        <label style="color: #484848;" for="">Текущий пароль</label>
+        <input type="text">
+        <label style="color: #484848;" for="">Новый пароль</label>
+        <input type="text">
+        <label style="color: #484848;" for="">Подтвердите пароль</label>
+        <input type="text">
+    </form>
+    <button class="glav_red_form_button">Сохранить</button>
+    </div>
+</div>
+
+{% endblock %}

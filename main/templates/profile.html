@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="pod">
+        <p class="pod_p">Профиль</p>
+        <div class="pod_prof">
+            <img class="pod_prof_img" src="{{ user.photo_prof.url }}" alt="R_S">
+            <p style="font-weight: bold; font-size: 25px; width: 90px;">{{ user.get_username }}</p>
+            <div class="pod_prof_p">
+                <p><img src="{% static 'images/arrow-out-right-square-half(1).png' %}" alt=""><a href="{% url 'logout_RS' %}">Выход</a></p>
+                <p><img src="{% static 'images/person-fill.svg' %}" alt=""><a href="{% url 'profile_detail' %}">Упр.Ак</a></p>
+            </div>
+        </div>
+        <div class="pod_info">
+            <p style="color: #484848; font-size: 22px;">Общая информация...</p>
+        </div>
+    </div>
+    <div class="stat">
+        <p class="stat_p">Ваша статистика</p>
+        <div class="stat_pok">
+            <p style="color: #484848; font-size: 20px; text-align: center;">У вас пока что небыло покупок...</p>
+        </div>
+    </div>
+{% endblock %}

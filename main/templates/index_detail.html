@@ -1,0 +1,55 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div id="glav_basket" class="glav_basket">
+    <div class="pod_glav_basket">
+        <div id="pod_glav_photo_basket" class="pod_glav_photo_basket">
+            <img src="{{ kartochka_tovara.img_en.url }}" alt="">
+            <div id="pod_glav_photo_ten_basket" class="pod_glav_photo_ten_basket"></div>
+        </div>
+        <div class="pod_glav_right_col">
+            <div class="pod_glav_osnova_basket">
+                <div class="pod_glav_osnova_sod_basket">
+                    <div class="pod_glav_osnova_sod_basket_ver">
+                        <p class="pod_glav_osnova_sod_basket_1">{{ kartochka_tovara.name }}</p>
+                        <div class="pod_glav_osnova_sod_basket_pal"></div>
+                        <p class="pod_glav_osnova_sod_basket_3">4.5</p>
+                        <p class="pod_glav_osnova_sod_basket_2">18 отзывов</p>
+                    </div>
+                    <div class="pod_glav_osnova_sod_basket_pal_2"></div>
+                    <div class="pod_glav_osnova_sod_basket_niz">
+                        <p class="pod_glav_osnova_sod_basket_4">{{ kartochka_tovara.price }} тг</p>
+                    </div> 
+                    <div class="pod_glav_osnova_sod_basket_button">
+                        <button class="basket">В корзину</button>
+                        <button class="kupit">Купить</button>
+                    </div>
+                </div>
+            </div>
+            <div id="pod_glav_op_basket" class="pod_glav_op_basket">
+                <div class="pod_glav_op_menu_basket">
+                        <p><a id="pod_glav_op_menu_basket_op" href="#">Описание</a></p>
+                        <div class="pod_glav_op_menu_basket_1"></div>
+                        <p><a id="pod_glav_op_menu_basket_xar"  href="#">Характиристики</a></p>
+                        <div class="pod_glav_op_menu_basket_2"></div>
+                    <p><a id="pod_glav_op_menu_basket_ot" href="#">Отзывы</a></p>
+                </div>
+                <div class="pod_glav_op_menu_basket_3"></div>
+                <div id="pod_glav_op_op_basket" class="pod_glav_op_op_basket">
+                    <p id="pod_glav_op_op_basket_1">{{ kartochka_tovara.opisanie }}</p>
+                    <p id="pod_glav_op_op_basket_2">{{ kartochka_tovara.xar }}</p>
+                    <p id="pod_glav_op_op_basket_3">
+                                Отзывов пока нет
+                    </p>
+                </div>
+                <div id="pod_glav_op_op_basket_blure" class="pod_glav_op_op_basket_blure"></div>
+                <a id="pod_glav_op_op_img_basket" class="pod_glav_op_op_img_basket" href="#"><img src="{% static 'images/path1.png' %}" alt=""></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

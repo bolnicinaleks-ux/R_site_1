@@ -1,0 +1,37 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="baner_block">
+    <img class="baner" src="{% static 'images/Ban.png' %}" alt="">
+</div>
+<form action="#" class="search-form">
+    <input type="text" placeholder="Поиск">
+    <button type="submit">Найти</button>
+</form>
+<p class="xz">Количество товара: {{ kartochka_tovara_count }}</p>
+<div class="tovar_grid">
+    <div class="tovar_grid_g">
+        {% for kartochka_tovara_list in kartochka_tovara_list %}
+        <div class="tovar">
+            <div class="kartinka">
+                <img src="{{ kartochka_tovara_list.img_en.url }}" alt="">
+            </div>
+            <a href="{{ kartochka_tovara_list.get_absolute_url }}" style="text-decoration: none;">
+                <div class="menu_tov">
+                    <p class="gor">{{ kartochka_tovara_list.name }}</p>
+                    <p class="reiting">4.5</p>
+                    <p class="price">{{ kartochka_tovara_list.price }}тг.</p>
+                    <p class="otziv">18 отзывов</p>
+                </div>
+            </a>
+            <div class="button-group">
+                <button class="basket">В корзину</button>
+                <button class="kupit">Купить</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -34,7 +34,12 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('index')
+                return redirect('login_RS')
+            else:
+                form = LoginForm()
+                return redirect('login_RS')
+    else:
+        form = LoginForm()
     return render(request, 'login_RS.html', {'form': form, 'form2': form2})
 
 def profile(request):

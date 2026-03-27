@@ -140,3 +140,10 @@ body {
     .box-visuals { height: auto; margin-top: 30px; margin-bottom: 20px; }
     .box-forms { min-height: 380px; }
 }
+.box_forms_oshibka {
+    width: 300px; max-width: 90vw; height: auto; min-height: 380px;
+    color: red; font-size: 18px; display: flex; align-items: center; justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 131px;
+}

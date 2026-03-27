@@ -57,6 +57,11 @@
                     
                     <button name="registr" type="submit" class="knopka" id="knopka" value="login">Войти</button>
                 </form>
+
+                {% if form.errors %}
+                    <p class="box_forms_oshibka">Неверный логин или пароль</p>
+                {% endif %}
+
             </div>
             
             <div class="box-visuals">

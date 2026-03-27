@@ -14,6 +14,7 @@ const password2_div = document.getElementById('password2_div');
 
 var none1 = password2;
 none1.disabled = true;
+p_login.reset();
 
 btnLogin.addEventListener('click', (e) => {
     e.preventDefault();

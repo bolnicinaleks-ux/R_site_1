@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import kartochka_tovara
 from django.contrib.auth import login, authenticate
-from .forms import SingUpForm, LoginForm
+from .forms import SingUpForm, LoginForm, user_update_form
 from django.contrib.auth import logout
 from . import models
 from django.views.generic import DetailView
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     kartochka_tovara_list = kartochka_tovara.objects.all()
@@ -54,7 +55,17 @@ class index_detail(DetailView):
     pk_url_kwarg = 'tovar_id'
     kartochka_tovara_list = kartochka_tovara.objects.all()
 
+@login_required
 def profile_detail(request):
-    User = models.CustomUser.objects.all()
-    context = {'User': User}
-    return render(request, 'profile_datail.html')
+    user_request = request.user
+    if request.method == 'POST':
+        form = user_update_form(request.POST, instance=user_request)
+        if form.is_valid():
+            form.save()
+            return redirect('profile_detail')
+        else:
+            form = user_update_form(instance=user_request)
+    else:
+        form = user_update_form()
+    context = {'form': form, 'user': user_request}
+    return render(request, 'profile_detail.html', context)

@@ -1,19 +1,21 @@
 {% extends "base_generic.html" %}
 
 {% load static %}
+{% load widget_tweaks %}
 
 {% block content %}
 
 <div class="glav_red">
     <p style="color: #484848;">Настройка профиля</p>
-    <form action="" method="post" class="glav_red_form">
+    <form action="{% url 'profile_detail' %}" method="post" class="glav_red_form">
+        {% csrf_token %}
     <div class="glav_red_img">
         <img src="{{ user.photo_prof.url }}" alt="">
         <button class="glav_red_img_button"><img src="{% static 'images/icons8-карандаш-96.png' %}" alt=""></button>
     </div>
     <div class="glav_red_log">
         <label for="">Имя пользователя</label>
-        <input type="text" placeholder="{{ user.get_username }}">
+        {% render_field form.username type="text" placeholder=user.get_username %}
     </div>
     <div class="glav_red_par">
         <label for="">Изменить пароль</label>
